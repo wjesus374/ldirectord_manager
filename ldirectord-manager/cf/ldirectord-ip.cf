@@ -1,0 +1,1313 @@
+#
+# Sample ldirectord configuration file to configure various virtual services.
+#
+# Ldirectord will connect to each real server once per second and request
+# /index.html. If the data returned by the server does not contain the
+# string "Test Message" then the test fails and the real server will be
+# taken out of the available pool. The real server will be added back into
+# the pool once the test succeeds. If all real servers are removed from the
+# pool then localhost:80 is added to the pool as a fallback measure.
+
+# Global Directives
+checktimeout=3
+checkinterval=15
+#fallback=127.0.0.1:80
+autoreload=yes
+logfile="/var/log/ldirectord/ldirectord-ip.log"
+#logfile="local0"
+quiescent=yes
+
+#Sample configuration for an nntp virtual service.
+#Fallback setting overides global
+
+# ----------------------------------
+# ------------- IP ----------------
+# ----------------------------------
+
+# Port Master
+virtual=192.168.202.50:6666
+         real=192.168.221.148:6666 masq 2
+         real=192.168.221.151:6666 masq 2 
+	 #real=192.168.221.171:6666 masq 2
+         service=pingpong_master
+         scheduler=wrr
+         # persistent=600
+         # netmask=255.255.255.255
+         protocol=tcp
+         negotiatetimeout=3
+
+virtual=192.168.202.50:10008
+        real=192.168.221.148:10008 masq 2
+        real=192.168.221.151:10008 masq 2 
+	#real=192.168.221.171:10008 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:10010
+        real=192.168.221.148:10010 masq 2
+	real=192.168.221.151:10010 masq 2 
+	#real=192.168.221.171:10010 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:10011
+        real=192.168.221.148:10011 masq 2
+        real=192.168.221.151:10011 masq 2 
+	#real=192.168.221.171:10011 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11200
+        real=192.168.221.148:11200 masq 2
+	real=192.168.221.151:11200 masq 2 
+	#real=192.168.221.171:11200 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11650
+        real=192.168.221.148:11650 masq 2
+	real=192.168.221.151:11650 masq 2 
+	#real=192.168.221.171:11650 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:11651
+        real=192.168.221.148:11651 masq 2
+	real=192.168.221.151:11651 masq 2 
+	#real=192.168.221.171:11651 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:11652
+        real=192.168.221.148:11652 masq 2
+	real=192.168.221.151:11652 masq 2 
+	#real=192.168.221.171:11652 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:11653
+        real=192.168.221.148:11653 masq 2
+	real=192.168.221.151:11653 masq 2 
+	#real=192.168.221.171:11653 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:11654
+        real=192.168.221.148:11654 masq 2
+	real=192.168.221.151:11654 masq 2 
+	#real=192.168.221.171:11654 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11700
+        real=192.168.221.148:11700 masq 2
+        real=192.168.221.151:11700 masq 2 
+	#real=192.168.221.171:11700 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11701
+        real=192.168.221.148:11701 masq 2
+        real=192.168.221.151:11701 masq 2 
+	#real=192.168.221.171:11701 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11702
+        real=192.168.221.148:11702 masq 2
+        real=192.168.221.151:11702 masq 2 
+	#real=192.168.221.171:11702 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11900
+        real=192.168.221.148:11900 masq 2
+        real=192.168.221.151:11900 masq 2 
+	#real=192.168.221.171:11900 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11901
+        real=192.168.221.148:11901 masq 2
+        real=192.168.221.151:11901 masq 2 
+	#real=192.168.221.171:11901 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11902
+        real=192.168.221.148:11902 masq 2
+        real=192.168.221.151:11902 masq 2 
+	#real=192.168.221.171:11902 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11903
+        real=192.168.221.148:11903 masq 2
+        real=192.168.221.151:11903 masq 2 
+	#real=192.168.221.171:11903 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11904
+        real=192.168.221.148:11904 masq 2
+        real=192.168.221.151:11904 masq 2 
+	#real=192.168.221.171:11904 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11905
+        real=192.168.221.148:11905 masq 2
+        real=192.168.221.151:11905 masq 2 
+	#real=192.168.221.171:11905 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11906
+        real=192.168.221.148:11906 masq 2
+        real=192.168.221.151:11906 masq 2 
+	#real=192.168.221.171:11906 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11907
+        real=192.168.221.148:11907 masq 2
+        real=192.168.221.151:11907 masq 2 
+	#real=192.168.221.171:11907 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11908
+        real=192.168.221.148:11908 masq 2
+        real=192.168.221.151:11908 masq 2 
+	#real=192.168.221.171:11908 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11909
+        real=192.168.221.148:11909 masq 2
+        real=192.168.221.151:11909 masq 2 
+	#real=192.168.221.171:11909 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11910
+        real=192.168.221.148:11910 masq 2
+        real=192.168.221.151:11910 masq 2 
+	#real=192.168.221.171:11910 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11911
+        real=192.168.221.148:11911 masq 2
+        real=192.168.221.151:11911 masq 2 
+	#real=192.168.221.171:11911 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11500
+        real=192.168.221.148:11500 masq 2
+        real=192.168.221.151:11500 masq 2 
+	#real=192.168.221.171:11500 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:11800
+        real=192.168.221.148:11800 masq 2
+	real=192.168.221.151:11800 masq 2 
+	#real=192.168.221.171:11800 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11801
+        real=192.168.221.148:11801 masq 2
+	real=192.168.221.151:11801 masq 2 
+	#real=192.168.221.171:11801 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17005
+        real=192.168.221.148:17005 masq 2
+        real=192.168.221.151:17005 masq 2 
+	#real=192.168.221.171:17005 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17006
+        real=192.168.221.148:17006 masq 2
+        real=192.168.221.151:17006 masq 2 
+	#real=192.168.221.171:17006 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17008
+        real=192.168.221.148:17008 masq 2
+        real=192.168.221.151:17008 masq 2 
+	#real=192.168.221.171:17008 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17016
+        real=192.168.221.148:17016 masq 2
+	real=192.168.221.151:17016 masq 2 
+	#real=192.168.221.171:17016 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17017
+        real=192.168.221.148:17017 masq 2
+	real=192.168.221.151:17017 masq 2 
+	#real=192.168.221.171:17017 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17018
+        real=192.168.221.148:17018 masq 2
+	real=192.168.221.151:17018 masq 2 
+	#real=192.168.221.171:17018 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17020
+        real=192.168.221.148:17020 masq 2
+        real=192.168.221.151:17020 masq 2 
+	#real=192.168.221.171:17020 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17021
+        real=192.168.221.148:17021 masq 2
+        real=192.168.221.151:17021 masq 2 
+	#real=192.168.221.171:17021 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17707
+        real=192.168.221.148:17707 masq 2
+        real=192.168.221.151:17707 masq 2 
+	#real=192.168.221.171:17707 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:20061
+        real=192.168.221.148:20061 masq 2
+	real=192.168.221.151:20061 masq 2 
+	#real=192.168.221.171:20061 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:20062
+        real=192.168.221.148:20062 masq 2
+	real=192.168.221.151:20062 masq 2 
+	#real=192.168.221.171:20062 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20063
+        real=192.168.221.148:20063 masq 2
+	real=192.168.221.151:20063 masq 2 
+	#real=192.168.221.171:20063 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20064
+        real=192.168.221.148:20064 masq 2
+	real=192.168.221.151:20064 masq 2 
+	#real=192.168.221.171:20064 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:20081
+        real=192.168.221.148:20081 masq 2
+	real=192.168.221.151:20081 masq 2 
+	#real=192.168.221.171:20081 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20082
+        real=192.168.221.148:20082 masq 2
+	real=192.168.221.151:20082 masq 2 
+	#real=192.168.221.171:20082 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20083
+        real=192.168.221.148:20083 masq 2
+	real=192.168.221.151:20083 masq 2 
+	#real=192.168.221.171:20083 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20221
+        real=192.168.221.148:20221 masq 2
+	real=192.168.221.151:20221 masq 2 
+	#real=192.168.221.171:20221 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20222
+        real=192.168.221.148:20222 masq 2
+	real=192.168.221.151:20222 masq 2 
+	#real=192.168.221.171:20222 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:20232
+        real=192.168.221.148:20232 masq 2
+	real=192.168.221.151:20232 masq 2 
+	#real=192.168.221.171:20232 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:20233
+        real=192.168.221.148:20233 masq 2
+	real=192.168.221.151:20233 masq 2 
+	#real=192.168.221.171:20233 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20234
+        real=192.168.221.148:20234 masq 2
+	real=192.168.221.151:20234 masq 2 
+	#real=192.168.221.171:20234 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:20241
+        real=192.168.221.148:20241 masq 2
+	real=192.168.221.151:20241 masq 2 
+	#real=192.168.221.171:20241 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20242
+        real=192.168.221.148:20242 masq 2
+	real=192.168.221.151:20242 masq 2 
+	#real=192.168.221.171:20242 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20243
+        real=192.168.221.148:20243 masq 2
+	real=192.168.221.151:20243 masq 2 
+	#real=192.168.221.171:20243 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20244
+        real=192.168.221.148:20244 masq 2
+	real=192.168.221.151:20244 masq 2 
+	#real=192.168.221.171:20244 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:20252
+        real=192.168.221.148:20252 masq 2
+	real=192.168.221.151:20252 masq 2 
+	#real=192.168.221.171:20252 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20253
+        real=192.168.221.148:20253 masq 2
+	real=192.168.221.151:20253 masq 2 
+	#real=192.168.221.171:20253 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20254
+        real=192.168.221.148:20254 masq 2
+	real=192.168.221.151:20254 masq 2 
+	#real=192.168.221.171:20254 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:20301
+        real=192.168.221.148:20301 masq 2
+	real=192.168.221.151:20301 masq 2 
+	#real=192.168.221.171:20301 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20312
+        real=192.168.221.148:20312 masq 2
+	real=192.168.221.151:20312 masq 2 
+	#real=192.168.221.171:20312 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20313
+        real=192.168.221.148:20313 masq 2
+	real=192.168.221.151:20313 masq 2 
+	#real=192.168.221.171:20313 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:20314
+        real=192.168.221.148:20314 masq 2
+	real=192.168.221.151:20314 masq 2 
+	#real=192.168.221.171:20314 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:20461
+        real=192.168.221.148:20461 masq 2
+        real=192.168.221.151:20461 masq 2 
+	#real=192.168.221.171:20461 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:23078
+        real=192.168.221.148:23078 masq 2
+        real=192.168.221.151:23078 masq 2 
+	#real=192.168.221.171:23078 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:23084
+        real=192.168.221.148:23084 masq 2
+        real=192.168.221.151:23084 masq 2 
+	#real=192.168.221.171:23084 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:30404
+        real=192.168.221.148:30404 masq 2
+        real=192.168.221.151:30404 masq 2 
+	#real=192.168.221.171:30404 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:30405
+        real=192.168.221.148:30405 masq 2
+	real=192.168.221.151:30405 masq 2 
+	#real=192.168.221.171:30405 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30406
+        real=192.168.221.148:30406 masq 2
+	real=192.168.221.151:30406 masq 2 
+	#real=192.168.221.171:30406 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:30415
+        real=192.168.221.148:30415 masq 2
+        real=192.168.221.151:30415 masq 2 
+	#real=192.168.221.171:30415 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30416
+        real=192.168.221.148:30416 masq 2
+	real=192.168.221.151:30416 masq 2 
+	#real=192.168.221.171:30416 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:30417
+        real=192.168.221.148:30417 masq 2
+	real=192.168.221.151:30417 masq 2 
+	#real=192.168.221.171:30417 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:30418
+        real=192.168.221.148:30418 masq 2
+	real=192.168.221.151:30418 masq 2 
+	#real=192.168.221.171:30418 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30420
+        real=192.168.221.148:30420 masq 2
+        real=192.168.221.151:30420 masq 2 
+	#real=192.168.221.171:30420 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30421
+        real=192.168.221.148:30421 masq 2
+        real=192.168.221.151:30421 masq 2 
+	#real=192.168.221.171:30421 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30422
+        real=192.168.221.148:30422 masq 2
+        real=192.168.221.151:30422 masq 2 
+	#real=192.168.221.171:30422 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30423
+        real=192.168.221.148:30423 masq 2
+        real=192.168.221.151:30423 masq 2 
+	#real=192.168.221.171:30423 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30425
+        real=192.168.221.148:30425 masq 2
+        real=192.168.221.151:30425 masq 2
+        #real=192.168.221.171:30425 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30426
+        real=192.168.221.148:30426 masq 2
+        real=192.168.221.151:30426 masq 2
+        #real=192.168.221.171:30426 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30600
+        real=192.168.221.148:30600 masq 2
+	real=192.168.221.151:30600 masq 2 
+	#real=192.168.221.171:30600 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:30610
+        real=192.168.221.148:30610 masq 2
+	real=192.168.221.151:30610 masq 2 
+	#real=192.168.221.171:30610 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:30615
+        real=192.168.221.148:30615 masq 2
+	real=192.168.221.151:30615 masq 2 
+	#real=192.168.221.171:30615 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:30620
+        real=192.168.221.148:30620 masq 2
+	real=192.168.221.151:30620 masq 2 
+	#real=192.168.221.171:30620 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:30625
+        real=192.168.221.148:30625 masq 2
+	real=192.168.221.151:30625 masq 2 
+	#real=192.168.221.171:30625 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:32001
+        real=192.168.221.148:32001 masq 2
+	real=192.168.221.151:32001 masq 2 
+	#real=192.168.221.171:32001 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:32002
+        real=192.168.221.148:32002 masq 2
+	real=192.168.221.151:32002 masq 2 
+	#real=192.168.221.171:32002 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:32003
+        real=192.168.221.148:32003 masq 2
+	real=192.168.221.151:32003 masq 2 
+	#real=192.168.221.171:32003 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:32004
+        real=192.168.221.148:32004 masq 2
+	real=192.168.221.151:32004 masq 2 
+	#real=192.168.221.171:32004 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:32005
+        real=192.168.221.148:32005 masq 2
+	real=192.168.221.151:32005 masq 2 
+	#real=192.168.221.171:32005 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:32007
+        real=192.168.221.148:32007 masq 2
+	real=192.168.221.151:32007 masq 2 
+	#real=192.168.221.171:32007 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:32029
+        real=192.168.221.148:32029 masq 2
+	real=192.168.221.151:32029 masq 2 
+	#real=192.168.221.171:32029 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:32030
+        real=192.168.221.148:32030 masq 2
+	real=192.168.221.151:32030 masq 2 
+	#real=192.168.221.171:32030 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:32105
+        real=192.168.221.148:32105 masq 2
+	real=192.168.221.151:32105 masq 2 
+	#real=192.168.221.171:32105 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:32283
+        real=192.168.221.148:32283 masq 2
+        real=192.168.221.151:32283 masq 2 
+	#real=192.168.221.171:32283 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:32285
+        real=192.168.221.148:32285 masq 2
+        real=192.168.221.151:32285 masq 2 
+	#real=192.168.221.171:32285 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:32286
+        real=192.168.221.148:32286 masq 2
+        real=192.168.221.151:32286 masq 2 
+	#real=192.168.221.171:32286 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:32289
+        real=192.168.221.148:32289 masq 2
+        real=192.168.221.151:32289 masq 2 
+	#real=192.168.221.171:32289 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:32290
+        real=192.168.221.148:32290 masq 2
+        real=192.168.221.151:32290 masq 2 
+	#real=192.168.221.171:32290 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:32291
+        real=192.168.221.148:32291 masq 2
+	real=192.168.221.151:32291 masq 2 
+	#real=192.168.221.171:32291 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:32781
+        real=192.168.221.148:32781 masq 2
+	real=192.168.221.151:32781 masq 2 
+	#real=192.168.221.171:32781 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:32782
+        real=192.168.221.148:32782 masq 2
+        real=192.168.221.151:32782 masq 2 
+	#real=192.168.221.171:32782 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:34002
+        real=192.168.221.148:34002 masq 2
+	real=192.168.221.151:34002 masq 2 
+	#real=192.168.221.171:34002 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:41063
+        real=192.168.221.148:41063 masq 2
+        real=192.168.221.151:41063 masq 2 
+	#real=192.168.221.171:41063 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:41064
+        real=192.168.221.148:41064 masq 2
+        real=192.168.221.151:41064 masq 2 
+	#real=192.168.221.171:41064 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:42072
+        real=192.168.221.148:42072 masq 2
+	real=192.168.221.151:42072 masq 2 
+	#real=192.168.221.171:42072 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:42073
+        real=192.168.221.148:42073 masq 2
+	real=192.168.221.151:42073 masq 2 
+	#real=192.168.221.171:42073 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:42074
+        real=192.168.221.148:42074 masq 2
+	real=192.168.221.151:42074 masq 2 
+	#real=192.168.221.171:42074 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:42075
+        real=192.168.221.148:42075 masq 2
+	real=192.168.221.151:42075 masq 2 
+	#real=192.168.221.171:42075 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:42081
+        real=192.168.221.148:42081 masq 2
+	real=192.168.221.151:42081 masq 2 
+	#real=192.168.221.171:42081 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:42083
+        real=192.168.221.148:42083 masq 2
+	real=192.168.221.151:42083 masq 2 
+	#real=192.168.221.171:42083 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:42084
+        real=192.168.221.148:42084 masq 2
+	real=192.168.221.151:42084 masq 2 
+	#real=192.168.221.171:42084 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:42085
+        real=192.168.221.148:42085 masq 2
+	real=192.168.221.151:42085 masq 2 
+	#real=192.168.221.171:42085 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:42086
+        real=192.168.221.148:42086 masq 2
+	real=192.168.221.151:42086 masq 2 
+	#real=192.168.221.171:42086 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:49001
+        real=192.168.221.148:49001 masq 2
+	real=192.168.221.151:49001 masq 2 
+	#real=192.168.221.171:49001 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:49002
+        real=192.168.221.148:49002 masq 2
+	real=192.168.221.151:49002 masq 2 
+	#real=192.168.221.171:49002 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:51024
+        real=192.168.221.148:51024 masq 2
+	real=192.168.221.151:51024 masq 2 
+	#real=192.168.221.171:51024 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:51025
+        real=192.168.221.148:51025 masq 2
+	real=192.168.221.151:51025 masq 2 
+	#real=192.168.221.171:51025 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:51026
+        real=192.168.221.148:51026 masq 2
+	real=192.168.221.151:51026 masq 2 
+	#real=192.168.221.171:51026 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+	
+virtual=192.168.202.50:51223
+        real=192.168.221.148:51223 masq 2
+	real=192.168.221.151:51223 masq 2 
+	#real=192.168.221.171:51223 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:51224
+        real=192.168.221.148:51224 masq 2
+	real=192.168.221.151:51224 masq 2 
+	#real=192.168.221.171:51224 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:50105
+        real=192.168.221.148:50105 masq 2
+        real=192.168.221.151:50105 masq 2 
+	#real=192.168.221.171:50105 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:51225
+        real=192.168.221.148:51225 masq 2
+        real=192.168.221.151:51225 masq 2 
+	#real=192.168.221.171:51225 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:51431
+        real=192.168.221.148:51431 masq 2
+        real=192.168.221.151:51431 masq 2 
+	#real=192.168.221.171:51431 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:51432
+        real=192.168.221.148:51432 masq 2
+        real=192.168.221.151:51432 masq 2 
+	#real=192.168.221.171:51432 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:52591
+        real=192.168.221.148:52591 masq 2
+        real=192.168.221.151:52591 masq 2 
+	#real=192.168.221.171:52591 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:52124
+        real=192.168.221.148:52124 masq 2
+	real=192.168.221.151:52124 masq 2 
+	#real=192.168.221.171:52124 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+#LCOMD
+
+virtual=192.168.202.50:8300
+        real=192.168.221.157:8300 masq 2
+	scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11587
+        real=192.168.221.148:11587 masq 2
+        real=192.168.221.151:11587 masq 2 
+	#real=192.168.221.171:11587 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11588
+        real=192.168.221.148:11588 masq 2
+        real=192.168.221.151:11588 masq 2 
+	#real=192.168.221.171:11588 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26000
+        real=192.168.221.148:26000 masq 2
+        real=192.168.221.151:26000 masq 2 
+	#real=192.168.221.171:26000 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26001
+        real=192.168.221.148:26001 masq 2
+        real=192.168.221.151:26001 masq 2 
+	#real=192.168.221.171:26001 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26002
+        real=192.168.221.148:26002 masq 2
+        real=192.168.221.151:26002 masq 2 
+	#real=192.168.221.171:26002 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26003
+        real=192.168.221.148:26003 masq 2
+        real=192.168.221.151:26003 masq 2 
+	#real=192.168.221.171:26003 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3        
+
+virtual=192.168.202.50:26004
+        real=192.168.221.148:26004 masq 2
+        real=192.168.221.151:26004 masq 2 
+	#real=192.168.221.171:26004 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26005
+        real=192.168.221.148:26005 masq 2
+        real=192.168.221.151:26005 masq 2 
+	#real=192.168.221.171:26005 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26006
+        real=192.168.221.148:26006 masq 2
+        real=192.168.221.151:26006 masq 2 
+	#real=192.168.221.171:26006 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26007
+        real=192.168.221.148:26007 masq 2
+        real=192.168.221.151:26007 masq 2 
+	#real=192.168.221.171:26007 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26008
+        real=192.168.221.148:26008 masq 2
+        real=192.168.221.151:26008 masq 2 
+	#real=192.168.221.171:26008 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26009
+        real=192.168.221.148:26009 masq 2
+        real=192.168.221.151:26009 masq 2 
+	#real=192.168.221.171:26009 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26010
+        real=192.168.221.148:26010 masq 2
+        real=192.168.221.151:26010 masq 2 
+	#real=192.168.221.171:26010 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:26011
+        real=192.168.221.148:26011 masq 2
+        real=192.168.221.151:26011 masq 2 
+	#real=192.168.221.171:26011 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11589
+        real=192.168.221.148:11589 masq 2
+        real=192.168.221.151:11589 masq 2 
+	#real=192.168.221.171:11589 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11586
+        real=192.168.221.148:11586 masq 2
+        real=192.168.221.151:11586 masq 2
+        #real=192.168.221.171:11586 masq 2
+	service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11710
+        real=192.168.221.148:11710 masq 2
+        real=192.168.221.151:11710 masq 2
+        #real=192.168.221.171:11710 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:11703
+        real=192.168.221.148:11703 masq 2
+        real=192.168.221.151:11703 masq 2
+     	real=192.168.221.171:11703 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30444
+        real=192.168.221.148:30444 masq 2
+        real=192.168.221.151:30444 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3

@@ -1,0 +1,51 @@
+#
+# Sample ldirectord configuration file to configure various virtual services.
+#
+# Ldirectord will connect to each real server once per second and request
+# /index.html. If the data returned by the server does not contain the
+# string "Test Message" then the test fails and the real server will be
+# taken out of the available pool. The real server will be added back into
+# the pool once the test succeeds. If all real servers are removed from the
+# pool then localhost:80 is added to the pool as a fallback measure.
+
+# Global Directives
+checktimeout=3
+checkinterval=15
+#fallback=127.0.0.1:80
+autoreload=yes
+logfile="/var/log/ldirectord/ldirectord-lss-cabal.log"
+#logfile="local0"
+quiescent=yes
+
+#Sample configuration for an nntp virtual service.
+#Fallback setting overides global
+
+# ----------------------------------
+# ------------- LSS ----------------
+# ----------------------------------
+
+# Port Master
+virtual=192.168.202.50:6666
+         real=192.168.221.136:6666 masq 2
+         real=192.168.221.138:6666 masq 2
+         real=192.168.221.142:6666 masq 2
+         real=192.168.221.144:6666 masq 2
+         real=192.168.221.146:6666 masq 2
+         service=pingpong_master
+         scheduler=wrr
+         # persistent=600
+         # netmask=255.255.255.255
+         protocol=tcp
+         negotiatetimeout=3
+
+#LSS PRODUCAO
+virtual=192.168.202.50:22005
+         real=192.168.221.136:22005 masq 2
+         real=192.168.221.138:22005 masq 2
+         real=192.168.221.142:22005 masq 2
+         real=192.168.221.144:22005 masq 2
+         real=192.168.221.146:22005 masq 2
+         service=pingpong_slave
+         scheduler=wrr
+         protocol=tcp
+         negotiatetimeout=3

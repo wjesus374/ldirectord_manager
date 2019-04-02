@@ -1,0 +1,94 @@
+{
+  "services": [
+    {
+      "protocol": "tcp", 
+      "name": "gprs", 
+      "realmasq": "masq 2", 
+      "ldservice": "pingpong_slave", 
+      "perlbin": "/usr/bin/perl", 
+      "virtual": "192.168.202.50", 
+      "negotiatetimeout": "3", 
+      "scheduler": "wrr", 
+      "reals": [
+        "192.168.221.123", 
+        "192.168.221.214", 
+        "192.168.221.222"
+      ], 
+      "ldirectordbin": "/opt/ldirectord/sbin/ldirectord-gprs"
+    }, 
+    {
+      "protocol": "udp", 
+      "name": "radius", 
+      "realmasq": "masq 2", 
+      "ldservice": "pingpong_slave", 
+      "perlbin": "/usr/bin/perl", 
+      "virtual": "192.168.202.50", 
+      "negotiatetimeout": "3", 
+      "scheduler": "wrr", 
+      "reals": [
+        "192.168.221.124", 
+        "192.168.221.126"
+      ], 
+      "ldirectordbin": "/opt/ldirectord/sbin/ldirectord"
+    }
+  ], 
+  "data": [
+    {
+      "ldirectordbin": "/opt/ldirectord/sbin/ldirectord"
+    }, 
+    {
+      "perlbin": "/usr/bin/perl"
+    }, 
+    {
+      "maxvirtalinfile": 150
+    }, 
+    {
+      "masterservice": "pingpong_master"
+    }, 
+    {
+      "masterservicetype": "gprs"
+    }
+  ], 
+  "config": [
+    {
+      "servicetype": "radius", 
+      "jsonfile": "json2/ldirectord-radius.cf.json0.cf.json", 
+      "perlbin": "/usr/bin/perl", 
+      "configfile": "final2/ldirectord-radius.cf.json0.cf.json0.cf", 
+      "virtualservers": 3, 
+      "ldirectordbin": "/usr/sbin/ldirectord-gprs"
+    }, 
+    {
+      "servicetype": "gprs", 
+      "jsonfile": "json2/ldirectord-gprs2.cf.json0.cf.json", 
+      "perlbin": "/usr/bin/perl", 
+      "configfile": "final2/ldirectord-gprs2.cf.json0.cf.json0.cf", 
+      "virtualservers": 150, 
+      "ldirectordbin": "/usr/sbin/ldirectord-gprs"
+    }, 
+    {
+      "servicetype": "gprs", 
+      "jsonfile": "json2/ldirectord-gprs2.cf.json1.cf.json", 
+      "perlbin": "/usr/bin/perl", 
+      "configfile": "final2/ldirectord-gprs2.cf.json1.cf.json0.cf", 
+      "virtualservers": 150, 
+      "ldirectordbin": "/usr/sbin/ldirectord-gprs"
+    }, 
+    {
+      "servicetype": "gprs", 
+      "jsonfile": "json2/ldirectord-gprs2.cf.json2.cf.json", 
+      "perlbin": "/usr/bin/perl", 
+      "configfile": "final2/ldirectord-gprs2.cf.json2.cf.json0.cf", 
+      "virtualservers": 150, 
+      "ldirectordbin": "/usr/sbin/ldirectord-gprs"
+    }, 
+    {
+      "servicetype": "gprs", 
+      "jsonfile": "json2/ldirectord-gprs2.cf.json3.cf.json", 
+      "perlbin": "/usr/bin/perl", 
+      "configfile": "final2/ldirectord-gprs2.cf.json3.cf.json0.cf", 
+      "virtualservers": 29, 
+      "ldirectordbin": "/usr/sbin/ldirectord-gprs"
+    }
+  ]
+}

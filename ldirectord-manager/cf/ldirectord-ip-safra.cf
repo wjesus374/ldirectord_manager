@@ -1,0 +1,171 @@
+# Global Directives
+checktimeout=3
+checkinterval=15
+#fallback=127.0.0.1:80
+autoreload=yes
+logfile="/var/log/ldirectord/ldirectord-ip-safra.log"
+#logfile="local0"
+quiescent=yes
+
+#Sample configuration for an nntp virtual service.
+#Fallback setting overides global
+
+# Port Master
+virtual=192.168.202.50:6666
+	real=192.168.221.148:6666 masq 2
+	real=192.168.221.151:6666 masq 2
+	#real=192.168.221.171:6666 masq 2
+	#real=192.168.221.121:6666 masq 2
+	service=pingpong_master
+	scheduler=wrr
+	# persistent=600
+	# netmask=255.255.255.255
+	protocol=tcp
+	negotiatetimeout=3
+
+virtual=192.168.202.50:17009
+        real=192.168.221.148:17009 masq 2
+        real=192.168.221.151:17009 masq 2
+        #real=192.168.221.171:17009 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17010
+        real=192.168.221.148:17010 masq 2
+        real=192.168.221.151:17010 masq 2
+        #real=192.168.221.171:17010 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17016
+        real=192.168.221.148:17016 masq 2
+        real=192.168.221.151:17016 masq 2
+        #real=192.168.221.171:17016 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17017
+        real=192.168.221.148:17017 masq 2
+        real=192.168.221.151:17017 masq 2
+        #real=192.168.221.171:17017 masq 2
+        #real=192.168.221.121:17017 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17018
+        real=192.168.221.148:17018 masq 2
+        real=192.168.221.151:17018 masq 2
+        #real=192.168.221.171:17018 masq 2
+        #real=192.168.221.121:17018 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17025
+        real=192.168.221.148:17025 masq 2
+        real=192.168.221.151:17025 masq 2
+        #real=192.168.221.171:17025 masq 2
+        #real=192.168.221.121:17025 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17014
+	real=192.168.221.148:17014 masq 2
+	real=192.168.221.151:17014 masq 2
+        #real=192.168.221.171:17014 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17015
+        real=192.168.221.148:17015 masq 2
+        real=192.168.221.151:17015 masq 2
+        #real=192.168.221.171:17015 masq 2
+        #real=192.168.221.121:17015 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17024
+        real=192.168.221.148:17024 masq 2
+        real=192.168.221.151:17024 masq 2
+        #real=192.168.221.171:17024 masq 2
+        #real=192.168.221.121:17024 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17026
+        real=192.168.221.148:17026 masq 2
+        real=192.168.221.151:17026 masq 2
+        #real=192.168.221.171:17026 masq 2
+        #real=192.168.221.121:17026 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17031
+        real=192.168.221.148:17031 masq 2
+        real=192.168.221.151:17031 masq 2
+        #real=192.168.221.171:17031 masq 2
+        #real=192.168.221.121:17031 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17028
+        real=192.168.221.148:17028 masq 2
+        real=192.168.221.151:17028 masq 2
+        #real=192.168.221.171:17028 masq 2
+        #real=192.168.221.121:17028 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17029
+        real=192.168.221.148:17029 masq 2
+        real=192.168.221.151:17029 masq 2
+        #real=192.168.221.171:17029 masq 2
+        #real=192.168.221.121:17029 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17030
+        real=192.168.221.148:17030 masq 2
+        real=192.168.221.151:17030 masq 2
+        #real=192.168.221.171:17030 masq 2
+        #real=192.168.221.121:17030 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17032
+        real=192.168.221.148:17032 masq 2
+        real=192.168.221.151:17032 masq 2
+        #real=192.168.221.171:17032 masq 2
+        #real=192.168.221.121:17032 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17033
+        real=192.168.221.148:17033 masq 2
+        real=192.168.221.151:17033 masq 2
+        #real=192.168.221.171:17033 masq 2
+        #real=192.168.221.121:17033 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:17798
+        real=192.168.221.148:17798 masq 2
+        real=192.168.221.151:17798 masq 2
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3

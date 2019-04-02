@@ -1,0 +1,86 @@
+#
+# Sample ldirectord configuration file to configure various virtual services.
+#
+# Ldirectord will connect to each real server once per second and request
+# /index.html. If the data returned by the server does not contain the
+# string "Test Message" then the test fails and the real server will be
+# taken out of the available pool. The real server will be added back into
+# the pool once the test succeeds. If all real servers are removed from the
+# pool then localhost:80 is added to the pool as a fallback measure.
+
+# Global Directives
+checktimeout=3
+checkinterval=15
+#fallback=127.0.0.1:80
+autoreload=yes
+logfile="/var/log/ldirectord/ldirectord-poslss-redecard.log"
+#logfile="local0"
+quiescent=yes
+
+#Sample configuration for an nntp virtual service.
+#Fallback setting overides global
+
+
+# ----------------------------------
+# ------------- LSS ----------------
+# ----------------------------------
+
+# Port Master
+virtual=192.168.202.50:6666
+	 real=192.168.221.241:6666 masq 2
+	 real=192.168.221.243:6666 masq 2
+	 real=192.168.221.245:6666 masq 2
+         service=pingpong_master
+         scheduler=wrr
+         # persistent=600
+         # netmask=255.255.255.255
+         protocol=tcp
+         negotiatetimeout=3
+
+#POSLSS REDECARD
+virtual=192.168.202.50:22020
+        real=192.168.221.241:22020 masq 2
+        real=192.168.221.243:22020 masq 2
+        real=192.168.221.245:22020 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:22021
+        real=192.168.221.241:22021 masq 2
+        real=192.168.221.243:22021 masq 2
+        real=192.168.221.245:22021 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:22022
+        real=192.168.221.241:22022 masq 2
+        real=192.168.221.243:22022 masq 2
+        real=192.168.221.245:22022 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:2121
+        #real=192.168.236.14:2121 masq 2
+        real=192.168.236.15:2121 masq 2
+        service=pingpong_slave
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+
+#virtual=192.168.202.50:22023
+#        real=192.168.221.241:22020 masq 2
+#        real=192.168.221.243:22020 masq 2
+#        real=192.168.221.245:22020 masq 2
+#        service=pingpong_slave
+#        scheduler=wrr
+#        protocol=tcp
+#        negotiatetimeout=3
+
+

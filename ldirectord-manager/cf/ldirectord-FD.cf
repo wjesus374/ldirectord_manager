@@ -1,0 +1,78 @@
+#
+# Sample ldirectord configuration file to configure various virtual services.
+#
+# Ldirectord will connect to each real server once per second and request
+# /index.html. If the data returned by the server does not contain the
+# string "Test Message" then the test fails and the real server will be
+# taken out of the available pool. The real server will be added back into
+# the pool once the test succeeds. If all real servers are removed from the
+# pool then localhost:80 is added to the pool as a fallback measure.
+
+# Global Directives
+checktimeout=3
+checkinterval=10
+#fallback=127.0.0.1:80
+autoreload=yes
+logfile="/tmp/ldirectord-FD.log"
+#logfile="local0"
+quiescent=yes
+
+#Sample configuration for an nntp virtual service.
+#Fallback setting overides global
+
+# Port Master
+
+
+virtual=192.168.202.50:30100
+	real=192.168.221.107:30100 masq 2
+	real=192.168.221.134:30100 masq 2
+	real=192.168.221.122:30100 masq 2
+	service=check_sonda_fd
+	scheduler=wrr
+	protocol=tcp
+	negotiatetimeout=3
+
+virtual=192.168.202.50:30101
+        real=192.168.221.107:30101 masq 2
+        real=192.168.221.134:30101 masq 2
+        real=192.168.221.122:30101 masq 2
+        service=check_sonda_fd
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30102
+	real=192.168.221.107:30102 masq 2
+	real=192.168.221.134:30102 masq 2
+	real=192.168.221.122:30102 masq 2
+        service=check_sonda_fd
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30103
+	real=192.168.221.134:30103 masq 2
+	real=192.168.221.107:30103 masq 2
+	real=192.168.221.122:30103 masq 2
+	service=check_sonda_fd
+	scheduler=wrr
+	protocol=tcp
+	negotiatetimeout=3
+
+virtual=192.168.202.50:30104
+        real=192.168.221.107:30104 masq 2
+        real=192.168.221.134:30104 masq 2
+        real=192.168.221.122:30104 masq 2
+        service=check_sonda_fd
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3
+
+virtual=192.168.202.50:30105
+        real=192.168.221.107:30105 masq 2
+        real=192.168.221.134:30105 masq 2
+        real=192.168.221.122:30105 masq 2
+        service=check_sonda_fd
+        scheduler=wrr
+        protocol=tcp
+        negotiatetimeout=3

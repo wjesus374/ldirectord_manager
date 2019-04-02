@@ -1,0 +1,27 @@
+# Global Directives
+checktimeout=3
+checkinterval=15
+#fallback=127.0.0.1:80
+autoreload=yes
+logfile="/var/log/ldirectord/ldirectord-radius.log"
+quiescent=no
+
+virtual=192.168.202.50:1812
+         real=192.168.221.124:1812 masq 2
+         real=192.168.221.126:1812 masq 2
+         #checktype = on
+         checktype=external
+         checkcommand="/usr/local/bin/check_radius.sh"
+         scheduler=wrr
+         protocol=udp
+         negotiatetimeout=10
+
+virtual=192.168.202.50:1813
+         real=192.168.221.124:1813 masq 2
+         real=192.168.221.126:1813 masq 2
+         #checktype = on
+         checktype=external
+         checkcommand="/usr/local/bin/check_udp.sh"
+         scheduler=wrr
+         protocol=udp
+         negotiatetimeout=10

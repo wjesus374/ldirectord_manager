@@ -1,0 +1,12 @@
+# add your services here - check ldirectord-mariadb.cf from docs for reference
+virtual=192.168.208.150:3306
+    real=192.168.208.101:3306 gate 2
+    real=192.168.208.102:3306 gate 1
+    netmask=255.255.255.255
+    service=mysql
+    checktype=negotiate
+    login="monetiq"
+    passwd="monetiq"
+    database="rft"
+    request="SELECT us_login FROM user_session LIMIT 1"
+    scheduler=wlc
